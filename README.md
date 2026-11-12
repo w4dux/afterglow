@@ -52,6 +52,10 @@ npm run dev
 
 How it works, how it was measured and every build command: [docs/TECHNICAL.md](docs/TECHNICAL.md).
 
+## Contributing
+
+Found a bug, or want to design a theme? See [CONTRIBUTING.md](CONTRIBUTING.md). It includes a step-by-step "make your own theme" guide.
+
 ## License
 
 [MIT](LICENSE)

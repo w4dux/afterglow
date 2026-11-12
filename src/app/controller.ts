@@ -17,6 +17,7 @@ import { SystemMediaAdapter } from '../playback/SystemMediaAdapter';
 import type { LocalTrackInfo, LrclibRecord } from '../shared/api';
 import { StageRuntime } from '../stage/runtime';
 import { extractPalette } from '../stage/textures';
+import { canFollowMedia } from './os';
 import { appInfo, loadSettingsRaw, native, openAudio, openLyrics, prefersReducedMotion, saveSettingsRaw } from './platform';
 import { buildReport } from './report';
 import { getApp, setApp, setUi, toast } from './store';
@@ -92,10 +93,10 @@ class AppController {
   }
 
   // ------------------------------------------------------------------ first run
-  /** The welcome is shown once, on Windows, to people who have not chosen a source yet. */
+  /** The welcome is shown once, on Windows and Linux, to people who have not chosen a source yet. */
   shouldWelcome(): boolean {
     const s = getApp();
-    return !!native && s.ready && s.info?.platform === 'win32' && !s.settings.firstRunDone && !s.settings.sources.followSystemMedia && s.source !== 'system';
+    return !!native && s.ready && canFollowMedia(s.info?.platform) && !s.settings.firstRunDone && !s.settings.sources.followSystemMedia && s.source !== 'system';
   }
 
   /** One click: follow Spotify (or whatever plays), with online lyrics as chosen. */

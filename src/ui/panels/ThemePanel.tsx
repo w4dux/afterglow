@@ -174,7 +174,7 @@ export function ThemePanel() {
         <summary>How Auto picks a theme</summary>
         <ol>
           <li>Your choice for this track, then your choice for the artist (if enabled).</li>
-          <li>A genre stated in metadata: file tags, the Windows media session, the lyric file, demo metadata, or Apple’s catalogue (when online lookups are on).</li>
+          <li>A genre stated in metadata: file tags, the system media session, the lyric file, demo metadata, or Apple’s catalogue (when online lookups are on).</li>
           <li>Optional suggestion from timed lyrics: very fast pace suggests Cypher, sparse lyrics with long breaks suggest Horizon. This is a heuristic, labelled as such.</li>
           <li>Otherwise your default theme.</li>
         </ol>

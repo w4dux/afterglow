@@ -56,7 +56,7 @@
 }
 .sg-card-title {
   margin-top: 0.4em;
-  font: 800 calc(var(--u) * 3.6) / 1.05 'Archivo Variable', 'Nirmala UI', sans-serif;
+  font: 800 calc(var(--u) * 3.6) / 1.05 'Archivo Variable', 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
   letter-spacing: -0.02em;
   text-shadow:
     0 0.06em 0 var(--outline),
@@ -67,7 +67,7 @@
 }
 .sg-card-artist {
   margin-top: 0.5em;
-  font: 600 calc(var(--u) * 1.3) / 1.2 'Archivo Variable', 'Nirmala UI', sans-serif;
+  font: 600 calc(var(--u) * 1.3) / 1.2 'Archivo Variable', 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
   opacity: 0.8;
 }
 .sg-stage,
@@ -83,7 +83,7 @@
 .sg-row {
   display: block;
   white-space: nowrap;
-  font-family: 'Archivo Variable', 'Nirmala UI', sans-serif;
+  font-family: 'Archivo Variable', 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
   font-weight: 780;
   letter-spacing: -0.01em;
   line-height: 1.42;

@@ -91,6 +91,8 @@ export interface BridgeState {
   endMs?: number;
   lastUpdatedWallMs?: number;
   emitWallMs: number;
+  /** Linux: why the player could not be read (e.g. D-Bus AccessDenied). */
+  error?: string;
   media?: { title?: string; artist?: string; album?: string; albumArtist?: string; genres?: string[]; error?: string } | null;
   controls?: { play: boolean; pause: boolean; toggle: boolean; next: boolean; prev: boolean; seek: boolean } | null;
   /** Added by the main process: wall clock when the line was read from the pipe. */
@@ -102,7 +104,7 @@ export type BridgeMessage =
   | { type: 'status'; available: boolean; error?: string }
   | { type: 'sessions'; sessions: { app: string; status: string }[]; systemCurrent?: string | null; attached?: string | null; preferred?: string }
   | BridgeState
-  | { type: 'artwork'; app: string; title: string; artist: string; mime: string | null; base64: string | null }
+  | { type: 'artwork'; app: string; title: string; artist: string; mime: string | null; base64: string | null; /** Linux: image URL, fetched by the main process. */ url?: string }
   | { type: 'ack'; id: number; ok: boolean; error?: string | null }
   | { type: 'bridge-exit'; code: number | null; signal: string | null; restarting: boolean; error?: string }
   | { type: 'bridge-unavailable'; reason: string };
@@ -123,6 +125,8 @@ export interface AppInfo {
 }
 
 export interface AfterglowApi {
+  /** Node's process.platform of the desktop app ('win32', 'linux', ...). */
+  platform: string;
   info(): Promise<AppInfo>;
   loadSettings(): Promise<unknown>;
   saveSettings(settings: unknown): Promise<void>;

@@ -2,6 +2,13 @@
 
 What changed in each version of Afterglow, newest first. Design notes with screenshots for recent versions are in `docs/DESIGN-*.md`.
 
+## Unreleased: Linux
+
+- **Afterglow runs on Linux (x64)** as an AppImage, a .deb and a .tar.gz (`npm run package:linux`).
+- **Follow Spotify on Linux.** The media bridge has a Linux backend that follows Spotify, or any MPRIS player, over D-Bus: title, artist, album, length, artwork, play/pause, next/previous and seeking. Position is read once per second and only passed on when it really changed, so lyrics stay as steady as on Windows. See "Linux: MPRIS" in `docs/TECHNICAL.md`.
+- First-run welcome, Music & lyrics, status cards and the diagnostics report name the right system ("MPRIS media session" on Linux).
+- Bengali text falls back to Noto Sans/Serif Bengali where Nirmala UI isn't installed.
+
 ## 2.6.0 Zine, controls that hide properly, polish
 
 - **New theme, Zine** (punk · DIY · garage · riot grrrl; see `docs/DESIGN-2.6.0.md`): a cut-and-paste fanzine. Every word is a scrap in its own typeface and paper, slapped down as it's sung; upcoming words wait as pencilled cut-lines. The sung word is on fluoro pink, choruses on yellow highlighter, and the artwork is a cut-out-and-keep coupon. Plain "punk" stays with Feedback.

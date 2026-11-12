@@ -142,3 +142,14 @@ describe('Windows playback adapter regressions', () => {
     expect(recordingKey('Spotify', 'Artist', 'Song', 'A')).not.toBe(recordingKey('Spotify', 'Artist', 'Song', 'B'));
   });
 });
+
+describe('Linux MPRIS read errors', () => {
+  it('passes a bridge read error (e.g. AccessDenied from a confined snap) on as a status message', () => {
+    const statuses: any[] = [];
+    const a = new SystemMediaAdapter({ observe: () => {}, track: () => {}, status: s => statuses.push(s) }, () => {}, 'spotify');
+    a.handle({ type: 'state', seq: 1, cause: 'initial', app: 'spotify', status: 'unknown', timelineAvailable: false, emitWallMs: Date.now(),
+      media: null, controls: null, error: 'The player refused access over D-Bus (AccessDenied).' } as BridgeState);
+    expect(statuses.at(-1).message).toMatch(/Can’t read Spotify: .*AccessDenied/);
+    a.dispose();
+  });
+});

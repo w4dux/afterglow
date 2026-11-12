@@ -1,14 +1,14 @@
 # Afterglow
 
-**Full-screen, animated lyrics for whatever you're playing on Windows.** Play a song in Spotify and Afterglow puts every line on stage as it's sung, in one of 17 themes.
+**Full-screen, animated lyrics for whatever you're playing on Windows and Linux.** Play a song in Spotify and Afterglow puts every line on stage as it's sung, in one of 17 themes.
 
 ![The same line in nine of Afterglow's themes](docs/media/themes.png)
 
-[**⬇ Download for Windows**](https://github.com/w4dux/afterglow/releases/latest) · [See it move (video)](docs/media/afterglow-motion-preview.mp4) · [Changelog](CHANGELOG.md)
+[**⬇ Download for Windows or Linux**](https://github.com/w4dux/afterglow/releases/latest) · [See it move (video)](docs/media/afterglow-motion-preview.mp4) · [Changelog](CHANGELOG.md)
 
 ## Why Afterglow
 
-- **Install and go.** No account and no Spotify login. It follows whatever Windows shows in its media controls.
+- **Install and go.** No account and no Spotify login. It follows whatever shows up in Windows' media controls, or in MPRIS on Linux.
 - **In time with the music.** Words land when they're sung, and it stays in step when you pause, skip or seek.
 - **A look for every song.** 17 themes, from a rap poster and a karaoke night to a lava lamp and a punk zine. Auto mode picks one from the song's genre.
 - **Honest.** If the lyrics only have timing per line, Afterglow never pretends to know each word.
@@ -16,7 +16,9 @@
 
 ## Get started
 
-1. Download **Afterglow-Setup-2.6.0-x64.exe** from [Releases](https://github.com/w4dux/afterglow/releases/latest) and run it. Windows may warn that the app isn't signed yet: choose **More info → Run anyway**.
+1. Download from [Releases](https://github.com/w4dux/afterglow/releases/latest):
+   - **Windows:** **Afterglow-Setup-2.6.0-x64.exe**, and run it. Windows may warn that the app isn't signed yet: choose **More info → Run anyway**.
+   - **Linux (x64):** the **.AppImage** (`chmod +x` it, then run it), the **.deb** for Debian/Ubuntu (`sudo apt install ./afterglow_*.deb`), or the **.tar.gz**. Works with the Spotify desktop app (deb, Snap or Flatpak) and any other player that supports MPRIS. On Ubuntu 24.04 and newer the AppImage needs FUSE 2: `sudo apt install libfuse2t64` (or run it with `--appimage-extract-and-run`). The .deb doesn't need it.
 2. Click **Follow Spotify**.
 3. Play a song. That's it.
 

@@ -1,18 +1,20 @@
 //! Afterglow media bridge.
 //!
-//! Observes the Windows Global System Media Transport Controls (GSMTC) session of a
-//! media app (Spotify by default) through the documented WinRT API
-//! `Windows.Media.Control.GlobalSystemMediaTransportControlsSessionManager` and writes
+//! Observes the media session of a media app (Spotify by default) and writes
 //! newline-delimited JSON to stdout. Commands arrive as JSON lines on stdin.
 //!
+//!  - Windows: the Global System Media Transport Controls (GSMTC) through the documented
+//!    WinRT API `Windows.Media.Control.GlobalSystemMediaTransportControlsSessionManager`.
+//!  - Linux: MPRIS (`org.mpris.MediaPlayer2.*`) on the D-Bus session bus.
+//!
 //! It never touches Spotify's private endpoints, tokens or cookies: it only sees what
-//! the app chooses to publish to Windows' media overlay.
+//! the app chooses to publish to the system's media controls.
 //!
 //! Usage:
-//!   afterglow-media-bridge.exe [--prefer spotify]            stream NDJSON (used by Afterglow)
-//!   afterglow-media-bridge.exe --probe 60 [--prefer spotify] measure update behaviour for 60 s
+//!   afterglow-media-bridge[.exe] [--prefer spotify]            stream NDJSON (used by Afterglow)
+//!   afterglow-media-bridge[.exe] --probe 60 [--prefer spotify] measure update behaviour for 60 s
 
-#[cfg(not(windows))]
+#[cfg(not(any(windows, target_os = "linux")))]
 use serde_json::json;
 use serde_json::Value;
 use std::io::{self, Write};
@@ -32,11 +34,19 @@ pub fn emit(v: &Value) {
     let _ = lock.flush();
 }
 
-#[cfg(not(windows))]
+#[cfg(not(any(windows, target_os = "linux")))]
 fn main() {
     emit(&json!({"type": "hello", "version": 1, "platform": std::env::consts::OS, "wallMs": wall_ms()}));
     emit(&json!({"type": "status", "available": false,
-        "error": "Windows media sessions (GSMTC) are only available on Windows 10 1809 or later."}));
+        "error": "Media sessions are supported on Windows (GSMTC) and Linux (MPRIS) only."}));
+}
+
+#[cfg(target_os = "linux")]
+mod linux;
+
+#[cfg(target_os = "linux")]
+fn main() {
+    linux::run();
 }
 
 #[cfg(windows)]

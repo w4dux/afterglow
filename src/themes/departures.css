@@ -1,0 +1,199 @@
+/* DEPARTURES: a station departure board; each word is a flap tile. */
+.departures {
+  --u: 13px;
+  --h: 760px;
+  --amber: #ffb627;
+  background: #0d0e10;
+  color: #f2efe8;
+}
+.dp-board {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(var(--h) * 0.25 - 1px), #ffffff08 calc(var(--h) * 0.25 - 1px) calc(var(--h) * 0.25)),
+    radial-gradient(ellipse 90% 70% at 50% 45%, #1b1d22, #0d0e10 75%);
+}
+.dp-head {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 11%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2em;
+  padding-bottom: 0.9em;
+  border-bottom: 2px solid #ffffff14;
+  font: 700 calc(var(--u) * 0.9) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.24em;
+}
+.dp-brand {
+  color: var(--amber);
+}
+.dp-cols {
+  opacity: 0.4;
+  font-size: 0.8em;
+}
+.dp-clock {
+  padding: 0.35em 0.6em;
+  border-radius: 0.2em;
+  background: linear-gradient(180deg, #24262b 0 48%, #0b0c0e 48% 52%, #1b1d21 52%);
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+.dp-meta {
+  position: absolute;
+  left: 7%;
+  right: 30%;
+  top: 18.5%;
+  font: 600 calc(var(--u) * 0.78) / 1.3 'JetBrains Mono Variable', 'Nirmala UI', monospace;
+  letter-spacing: 0.14em;
+  opacity: 0.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dp-row {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  display: grid;
+  grid-template-columns: 3.2em 1fr auto;
+  gap: 1.2em;
+  align-items: center;
+  padding: 0.7em 0;
+  font: 700 calc(var(--u) * 1.15) / 1.2 'JetBrains Mono Variable', 'Nirmala UI', monospace;
+  letter-spacing: 0.06em;
+  transition: opacity 260ms ease;
+}
+.dp-prev {
+  top: 23.5%;
+  opacity: 0.38;
+  border-bottom: 1px solid #ffffff10;
+}
+.dp-nextrow {
+  bottom: 13%;
+  opacity: 0.62;
+  border-top: 1px solid #ffffff10;
+}
+.dp-row.empty,
+.departures.hide-prev .dp-prev,
+.departures.hide-next .dp-nextrow {
+  opacity: 0;
+}
+.dp-no {
+  color: var(--amber);
+  font-variant-numeric: tabular-nums;
+}
+.dp-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dp-state {
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  padding: 0.3em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 0.2em;
+  opacity: 0.8;
+}
+.dp-nextrow .dp-state {
+  color: var(--amber);
+}
+.dp-status {
+  position: absolute;
+  left: 7%;
+  top: 31%;
+  font: 700 calc(var(--u) * 0.78) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.26em;
+  color: #0d0e10;
+  background: var(--amber);
+  padding: 0.45em 0.8em;
+  border-radius: 0.15em;
+}
+.departures.in-gap .dp-status {
+  opacity: 0;
+}
+.dp-stage,
+.dp-line {
+  position: absolute;
+}
+.dp-line {
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+}
+.dp-trow {
+  display: block;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono Variable', 'Nirmala UI', monospace;
+  font-weight: 760;
+  letter-spacing: 0.01em;
+  line-height: 1.32;
+  word-spacing: -0.3em;
+}
+/* each word is a flap tile */
+.dp-line .g {
+  position: relative;
+  padding: 0.04em 0.15em 0.02em;
+  margin: 0 0.04em;
+  border-radius: 0.07em;
+  background: linear-gradient(180deg, #2a2c32 0 49%, #08090a 49% 51%, #202226 51% 100%);
+  box-shadow:
+    0 0.05em 0 #000000aa,
+    inset 0 1px 0 #ffffff14;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+}
+.dp-line .g[data-f='0'] .u {
+  color: transparent;
+}
+.dp-line .u {
+  transition: color 120ms linear;
+}
+.dp-line .u[data-s='future'] {
+  color: #f2efe855;
+}
+.dp-line .u[data-s='arrived'],
+.dp-line .u[data-s='past'] {
+  color: #f2efe8;
+}
+.dp-line .u[data-s='active'] {
+  color: var(--amber);
+  text-shadow: 0 0 0.3em #ffb62744;
+}
+.dp-gap {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 41%;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+.departures.in-gap .dp-gap {
+  opacity: 1;
+}
+.dp-gap-title {
+  display: inline-block;
+  font: 760 calc(var(--u) * 3.4) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.04em;
+  padding: 0.12em 0.3em;
+  border-radius: 0.06em;
+  background: linear-gradient(180deg, #2a2c32 0 49%, #08090a 49% 51%, #202226 51% 100%);
+  color: var(--amber);
+}
+.dp-gap-time {
+  margin-top: 1.4em;
+  font: 700 calc(var(--u) * 0.85) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.24em;
+  opacity: 0.7;
+}
+.departures[data-context='off'] .dp-meta {
+  display: none;
+}
+.departures .est-tag {
+  color: var(--amber);
+}

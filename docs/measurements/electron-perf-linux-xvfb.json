@@ -1,0 +1,136 @@
+{
+  "note": "Electron on Linux under Xvfb (software compositing, no GPU); 1600x900 window.",
+  "playing": [
+    {
+      "theme": "cypher",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.095,
+        "p95": 0.2,
+        "max": 1.3
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 6.4,
+        "Utility": 0.1,
+        "Tab": 34
+      },
+      "totalCpuPercent": 40.8,
+      "totalMemMB": 745
+    },
+    {
+      "theme": "nocturne",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.079,
+        "p95": 0.2,
+        "max": 1.9
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 16.6,
+        "Utility": 0.1,
+        "Tab": 41.5
+      },
+      "totalCpuPercent": 58.4,
+      "totalMemMB": 824
+    },
+    {
+      "theme": "velvet",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.075,
+        "p95": 0.2,
+        "max": 0.9
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 16.4,
+        "Utility": 0.2,
+        "Tab": 8.2
+      },
+      "totalCpuPercent": 25.1,
+      "totalMemMB": 775
+    },
+    {
+      "theme": "sherbet",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.082,
+        "p95": 0.2,
+        "max": 1.5
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.3,
+        "GPU": 11.6,
+        "Utility": 0.2,
+        "Tab": 7.6
+      },
+      "totalCpuPercent": 19.7,
+      "totalMemMB": 780
+    },
+    {
+      "theme": "feedback",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.05,
+        "p95": 0.1,
+        "max": 0.6
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 1.9,
+        "Utility": 0.1,
+        "Tab": 6.7
+      },
+      "totalCpuPercent": 8.9,
+      "totalMemMB": 751
+    },
+    {
+      "theme": "horizon",
+      "fps": 60.2,
+      "sceneFrameMs": {
+        "avg": 0.062,
+        "p95": 0.2,
+        "max": 0.4
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 9.6,
+        "Utility": 0.1,
+        "Tab": 17.1
+      },
+      "totalCpuPercent": 27,
+      "totalMemMB": 747
+    },
+    {
+      "theme": "quiet",
+      "fps": 60,
+      "sceneFrameMs": {
+        "avg": 0.041,
+        "p95": 0.1,
+        "max": 3.1
+      },
+      "jsHeapMB": 10,
+      "cpuPercentByProcess": {
+        "Browser": 0.2,
+        "GPU": 1,
+        "Utility": 0.2,
+        "Tab": 3.7
+      },
+      "totalCpuPercent": 5,
+      "totalMemMB": 688
+    }
+  ],
+  "paused": {
+    "framesIn5s": 0,
+    "totalCpuPercent": 0.2,
+    "totalMemMB": 615
+  }
+}

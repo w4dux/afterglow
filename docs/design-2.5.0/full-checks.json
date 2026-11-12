@@ -1,0 +1,371 @@
+{
+  "cypher": {
+    "jsCost": {
+      "avg": 0.023,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 73.3,
+      "worstGapMs": 53.5,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "nocturne": {
+    "jsCost": {
+      "avg": 0.108,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 70.7,
+      "worstGapMs": 26.9,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "velvet": {
+    "jsCost": {
+      "avg": 0.103,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 71,
+      "worstGapMs": 26.9,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "sherbet": {
+    "jsCost": {
+      "avg": 0.092,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 74.3,
+      "worstGapMs": 26.8,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "feedback": {
+    "jsCost": {
+      "avg": 0.033,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 73,
+      "worstGapMs": 80.1,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "horizon": {
+    "jsCost": {
+      "avg": 0.035,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 74.7,
+      "worstGapMs": 13.7,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "quiet": {
+    "jsCost": {
+      "avg": 0.019,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 75,
+      "worstGapMs": 13.9,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "afterhours": {
+    "jsCost": {
+      "avg": 0.048,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 71.3,
+      "worstGapMs": 66.8,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "riot": {
+    "jsCost": {
+      "avg": 0.039,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 75,
+      "worstGapMs": 13.8,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "prism": {
+    "jsCost": {
+      "avg": 0.032,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 74.7,
+      "worstGapMs": 13.6,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "halo": {
+    "jsCost": {
+      "avg": 0.051,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 70.3,
+      "worstGapMs": 66.8,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "monsoon": {
+    "jsCost": {
+      "avg": 0.032,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 73.3,
+      "worstGapMs": 40,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "departures": {
+    "jsCost": {
+      "avg": 0.023,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 75,
+      "worstGapMs": 13.8,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "haze": {
+    "jsCost": {
+      "avg": 0.075,
+      "p95": 0.2
+    },
+    "fps": {
+      "fps": 71,
+      "worstGapMs": 40,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "rave": {
+    "jsCost": {
+      "avg": 0.051,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 70.3,
+      "worstGapMs": 40.2,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "singalong": {
+    "jsCost": {
+      "avg": 0.038,
+      "p95": 0.1
+    },
+    "fps": {
+      "fps": 74.7,
+      "worstGapMs": 13.7,
+      "divisor": 1,
+      "hz": 75
+    },
+    "compactOutside": [],
+    "reducedStable": true,
+    "lineTimedSweep": {
+      "tag": true,
+      "active": 1
+    },
+    "lineTimedPlain": {
+      "tag": false,
+      "active": 0,
+      "ball": false
+    }
+  },
+  "errors": []
+}

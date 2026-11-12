@@ -1,0 +1,376 @@
+[
+  {
+    "at": 830.1453,
+    "phase": "initial",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "initial",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213109037.4622,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213107260.4873,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 27708,
+      "rate": 1,
+      "seq": 1,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 3564.3479,
+    "phase": "baseline",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213111778.0508,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213111768.1528,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 32216,
+      "rate": 1,
+      "seq": 2,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 8072.6911,
+    "phase": "baseline",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213116286.3884,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213116276.538,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 36725,
+      "rate": 1,
+      "seq": 3,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 12585.8543,
+    "phase": "baseline",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213120799.1387,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213120790.52,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 41238,
+      "rate": 1,
+      "seq": 4,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 17044.6934,
+    "phase": "pause",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "playback",
+      "controls": {
+        "next": true,
+        "pause": false,
+        "play": true,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213125258.4849,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213120790.52,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 41238,
+      "rate": 1,
+      "seq": 5,
+      "startMs": 0,
+      "status": "paused",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 17049.6188,
+    "phase": "pause",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": false,
+        "play": true,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213125262.0664,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213125247.6804,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 45402,
+      "rate": 1,
+      "seq": 6,
+      "startMs": 0,
+      "status": "paused",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 17088.3623,
+    "phase": "pause",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": false,
+        "play": true,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213125301.933,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213125296.3833,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 45402,
+      "rate": 1,
+      "seq": 7,
+      "startMs": 0,
+      "status": "paused",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 18774.0093,
+    "phase": "resume",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "playback",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213126987.8293,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213125296.3833,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 45402,
+      "rate": 1,
+      "seq": 8,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 18774.2557,
+    "phase": "resume",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213126988.0068,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213126982.7178,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 45678,
+      "rate": 1,
+      "seq": 9,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 21598.5786,
+    "phase": "resume",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213129812.3608,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213129807.6875,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 48503,
+      "rate": 1,
+      "seq": 10,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  },
+  {
+    "at": 26112.2123,
+    "phase": "resume",
+    "message": {
+      "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+      "cause": "timeline",
+      "controls": {
+        "next": true,
+        "pause": true,
+        "play": false,
+        "prev": true,
+        "seek": true,
+        "toggle": true
+      },
+      "emitWallMs": 1794213134325.403,
+      "endMs": 271960,
+      "lastUpdatedWallMs": 1794213134315.8052,
+      "media": {
+        "album": "Trip",
+        "albumArtist": "Jhen\u00e9 Aiko",
+        "artist": "Jhen\u00e9 Aiko",
+        "genres": [],
+        "title": "Sativa",
+        "trackNumber": 7
+      },
+      "positionMs": 53012,
+      "rate": 1,
+      "seq": 11,
+      "startMs": 0,
+      "status": "playing",
+      "timelineAvailable": true,
+      "type": "state"
+    }
+  }
+]

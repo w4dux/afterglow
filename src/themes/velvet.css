@@ -1,0 +1,163 @@
+/* VELVET — R&B / soul */
+.velvet {
+  --base: #1c0a1f;
+  --l0: #c4622d;
+  --l1: #8f2d56;
+  --l2: #f6c7a1;
+  --cream: #f6e7d8;
+  --gold: #ffcf8a;
+  --pulse: 0;
+  background: radial-gradient(ellipse at 30% 110%, color-mix(in srgb, var(--l1) 35%, #000) 0%, var(--base) 55%, #070208 100%);
+  color: var(--cream);
+}
+.vv-art {
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  width: 62vh;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background-size: cover;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 35%, transparent 100%);
+  opacity: 0;
+}
+.velvet.has-art .vv-art {
+  opacity: 0.55;
+}
+.vv-light {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.vv-light.l0 {
+  left: -18vmax;
+  bottom: -38vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--l0) 70%, transparent), transparent 72%);
+  opacity: 0.55;
+}
+.vv-light.l1 {
+  right: -26vmax;
+  top: -34vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--l1) 75%, transparent), transparent 70%);
+  opacity: 0.5;
+}
+.vv-light.l2 {
+  left: 30%;
+  top: 30%;
+  width: 40vmax;
+  height: 40vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--l2) 30%, transparent), transparent 70%);
+  opacity: 0.25;
+}
+.vv-bloom {
+  position: absolute;
+  left: -22vmin;
+  top: -22vmin;
+  width: 44vmin;
+  height: 44vmin;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 196, 120, calc(0.26 + var(--pulse) * 0.08)), rgba(255, 140, 80, 0.08) 55%, transparent 72%);
+  pointer-events: none;
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 600ms ease;
+  opacity: 0;
+}
+.vv-column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.vv-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  transform-origin: 0 0;
+}
+.vv-row {
+  display: block;
+  white-space: nowrap;
+  font-family: 'Fraunces Variable', Georgia, serif;
+  font-style: italic;
+  font-weight: 360;
+  font-variation-settings:
+    'SOFT' 100,
+    'WONK' 1,
+    'opsz' 96;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+.vv-line .u {
+  color: rgba(246, 231, 216, 0.3);
+  transition: color 260ms ease, text-shadow 260ms ease;
+}
+.vv-line .u[data-s='active'] {
+  color: var(--gold);
+  text-shadow:
+    0 0 0.35em rgba(255, 170, 90, 0.55),
+    0 0 0.05em rgba(255, 220, 170, 0.6);
+}
+.vv-line .u[data-s='past'],
+.vv-line .u[data-s='arrived'] {
+  color: var(--cream);
+}
+.vv-credit {
+  position: absolute;
+  left: 11%;
+  bottom: max(72px, 9%);
+  font: 400 var(--u) / 1 'Fraunces Variable', serif;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: rgba(246, 231, 216, 0.5);
+}
+.is-preview .vv-credit {
+  bottom: 8%;
+}
+.vv-gap {
+  position: absolute;
+  left: 11%;
+  top: 44%;
+  opacity: 0;
+}
+.vv-gap-dots {
+  font: 300 calc(var(--u) * 3.2) / 1 'Fraunces Variable', serif;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 0.4em rgba(255, 170, 90, 0.5);
+}
+.vv-gap-clock {
+  margin-top: 0.7em;
+  font: 400 calc(var(--u) * 1.1) / 1 'Fraunces Variable', serif;
+  font-style: italic;
+  color: rgba(246, 231, 216, 0.55);
+}
+@media (max-height: 420px) {
+  .vv-credit {
+    display: none;
+  }
+}
+.vv-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 40% 50%, transparent 45%, rgba(5, 0, 6, 0.7) 100%);
+  pointer-events: none;
+}
+.vv-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vv-line .u,
+  .vv-bloom {
+    transition: none;
+  }
+}

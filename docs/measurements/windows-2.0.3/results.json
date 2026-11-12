@@ -1,0 +1,109 @@
+{
+  "initial": {
+    "title": "Song C",
+    "playing": true,
+    "position": 15778.307177734561,
+    "sync": {
+      "trackKey": "rec:[\"spotifyab.spotifymusic_zpdnekdrzrea0!spotify\",\"artist c\",\"song c\",\"artist c\",\"\"]",
+      "generation": 6,
+      "source": "system",
+      "playing": true,
+      "rate": 1,
+      "positionMs": 15778.307177734561,
+      "rawPositionMs": 15778.307177734561,
+      "residualMs": 0,
+      "lastObservedPositionMs": 12468,
+      "observationAgeMs": 3310.3071777345613,
+      "lastLatencyMs": 3231.207177734468,
+      "durationMs": 199600,
+      "quality": "tracking",
+      "qualityReason": "recent observation",
+      "stats": {
+        "accepted": 60,
+        "rejected": 0,
+        "duplicates": 0,
+        "snaps": 0,
+        "slews": 54,
+        "seeks": 0,
+        "holds": 0,
+        "meanAbsErrorMs": null,
+        "p95AbsErrorMs": null,
+        "maxAbsErrorMs": null,
+        "samples": 0
+      }
+    },
+    "source": "system",
+    "version": "2.0.3"
+  },
+  "results": [
+    {
+      "name": "offline demo word timing",
+      "passed": true
+    },
+    {
+      "name": "mid-song attachment",
+      "passed": true
+    },
+    {
+      "name": "live pause and stable frozen position",
+      "passed": true
+    },
+    {
+      "name": "live forward/backward seeks",
+      "passed": true
+    },
+    {
+      "name": "live resume advances",
+      "passed": true
+    },
+    {
+      "name": "native helper crash recovers",
+      "passed": true
+    },
+    {
+      "name": "live online provider lookup",
+      "passed": true
+    },
+    {
+      "name": "renderer errors",
+      "passed": true
+    }
+  ],
+  "final": {
+    "title": "Song C",
+    "playing": true,
+    "position": 16228.801157327953,
+    "sync": {
+      "trackKey": "rec:[\"spotifyab.spotifymusic_zpdnekdrzrea0!spotify\",\"artist c\",\"song c\",\"artist c\",\"\"]",
+      "generation": 6,
+      "source": "system",
+      "playing": true,
+      "rate": 1,
+      "positionMs": 16228.801157327953,
+      "rawPositionMs": 16225.727001952939,
+      "residualMs": -3.0741553750139565,
+      "lastObservedPositionMs": 15788,
+      "observationAgeMs": 437.72700195293874,
+      "lastLatencyMs": 19.327001953031868,
+      "durationMs": 199600,
+      "quality": "tracking",
+      "qualityReason": "recent observation",
+      "stats": {
+        "accepted": 82,
+        "rejected": 0,
+        "duplicates": 0,
+        "snaps": 0,
+        "slews": 56,
+        "seeks": 9,
+        "holds": 2,
+        "meanAbsErrorMs": 9.176000976469368,
+        "p95AbsErrorMs": 17.863183593843132,
+        "maxAbsErrorMs": 17.863183593843132,
+        "samples": 4
+      }
+    },
+    "source": "system",
+    "timing": "line",
+    "version": "2.0.3"
+  }
+}

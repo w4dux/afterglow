@@ -1,0 +1,408 @@
+{
+ "note": "Captured 2026-11-09 on Windows 11, Spotify (Microsoft Store) 1.306, two pause/resume cycles started from Afterglow. Spotify sent its paused position about 300 ms behind; its resume position agreed with continuous playback within 23-42 ms. In the second cycle the lagging position arrived as a \"playing\" report 3 ms before the pause.",
+ "events": [
+  {
+   "at": 249134,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 1,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246259452,
+    "positionMs": 70281,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246259439.6248,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 251011.5,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 2,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246261329,
+    "positionMs": 71848,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246261307.2417,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 251014.3,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 3,
+    "cause": "playback",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246261332,
+    "positionMs": 71848,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246261307.2417,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 253643.4,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 4,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246263961,
+    "positionMs": 71848,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246263951.9067,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 254088.6,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 5,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246264406,
+    "positionMs": 72129,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246264401.5845,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 254089.1,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 6,
+    "cause": "playback",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246264407,
+    "positionMs": 72129,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246264401.5845,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 258156.4,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 7,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246268474,
+    "positionMs": 76196,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246268468.1877,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 262681.5,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 8,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246272999,
+    "positionMs": 80715,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246272987.047,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 262936,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 9,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246273254,
+    "positionMs": 80678,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246273244.68,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 262939.2,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 10,
+    "cause": "playback",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246273257,
+    "positionMs": 80678,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246273244.68,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 266000.8,
+   "phase": "pause",
+   "message": {
+    "type": "state",
+    "seq": 11,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "paused",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246276318,
+    "positionMs": 80958,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246276313.0408,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 266005.9,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 12,
+    "cause": "playback",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246276323,
+    "positionMs": 80958,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246276313.0408,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  },
+  {
+   "at": 267189.4,
+   "phase": "play",
+   "message": {
+    "type": "state",
+    "seq": 13,
+    "cause": "timeline",
+    "app": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify",
+    "status": "playing",
+    "rate": 1,
+    "timelineAvailable": true,
+    "emitWallMs": 1794246277507,
+    "positionMs": 82140,
+    "startMs": 0,
+    "endMs": 281967,
+    "lastUpdatedWallMs": 1794246277495.5525,
+    "media": {
+     "title": "Orbiter",
+     "artist": "Noah Kahan",
+     "album": "The Great Divide: The Last Of The Bugs"
+    },
+    "controls": {
+     "play": true,
+     "pause": true,
+     "toggle": true,
+     "next": true,
+     "prev": true,
+     "seek": true
+    }
+   }
+  }
+ ]
+}

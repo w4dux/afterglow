@@ -1,0 +1,55 @@
+{
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "playbackSampleSeconds": 12,
+  "frames": 718,
+  "audioClockRateVsPerformanceNow": 0.999997,
+  "currentTimeUpdateIntervalMs": {
+    "min": 8.4,
+    "median": 16.7,
+    "max": 35.1,
+    "distinctValues": 718
+  },
+  "rawCurrentTimeResidualMs": {
+    "n": 718,
+    "meanSigned": 0,
+    "meanAbs": 0.08,
+    "p95Abs": 0.16,
+    "maxAbs": 3.87
+  },
+  "displayedPositionErrorMs": {
+    "n": 718,
+    "meanSigned": 0.81,
+    "meanAbs": 0.82,
+    "p95Abs": 2.71,
+    "maxAbs": 8.28
+  },
+  "displayedWentBackwardsFrames": 0,
+  "pause": {
+    "driftAfter1sMs": 0,
+    "displayedMinusAudioMs": 0
+  },
+  "seek": {
+    "target": 40000,
+    "msUntilDisplayed": 16.3,
+    "frames": 1,
+    "lineAfterSeek": 11,
+    "steadyStateErrorAfter1500ms": 1.31
+  },
+  "trackChange": {
+    "msUntilNewTrackDisplayed": 4.1,
+    "frames": 1,
+    "generation": 8
+  },
+  "engineStats": {
+    "accepted": 937,
+    "rejected": 1,
+    "duplicates": 1,
+    "snaps": 0,
+    "slews": 139,
+    "seeks": 4,
+    "meanAbsErrorMs": null,
+    "p95AbsErrorMs": null,
+    "maxAbsErrorMs": null,
+    "samples": 0
+  }
+}

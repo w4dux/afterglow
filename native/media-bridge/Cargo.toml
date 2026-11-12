@@ -1,0 +1,31 @@
+[package]
+name = "afterglow-media-bridge"
+version = "1.0.0"
+edition = "2021"
+description = "Observes Windows Global System Media Transport Controls sessions and streams NDJSON to Afterglow"
+license = "MIT"
+
+[[bin]]
+name = "afterglow-media-bridge"
+path = "src/main.rs"
+
+[dependencies]
+serde_json = "1"
+base64 = "0.22"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62", features = [
+  "Foundation",
+  "Foundation_Collections",
+  "Media_Control",
+  "Storage_Streams",
+  "Win32_System_WinRT",
+] }
+windows-future = "*"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

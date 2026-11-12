@@ -1,0 +1,171 @@
+/* SINGALONG: the karaoke-party screen: two rows, colour fill, a bouncing ball. */
+.singalong {
+  --u: 13px;
+  --h: 760px;
+  --fill: #ffd23f;
+  --outline: #0b1446;
+  background: #0b1a5c;
+  color: #ffffff;
+}
+.sg-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, #2a4bd8, transparent 70%),
+    linear-gradient(180deg, #13227a 0%, #0b1a5c 55%, #070f3a 100%);
+}
+.sg-rays {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: calc(var(--h) * 2.6);
+  height: calc(var(--h) * 2.6);
+  margin: calc(var(--h) * -1.3) 0 0 calc(var(--h) * -1.3);
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, #ffffff10 0deg 6deg, transparent 6deg 18deg);
+  mask-image: radial-gradient(circle, #000 0%, #000 25%, transparent 62%);
+  pointer-events: none;
+  will-change: transform;
+}
+.sg-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48%;
+  background: linear-gradient(180deg, transparent, rgba(4, 8, 30, 0.75));
+  pointer-events: none;
+}
+.sg-card {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 16%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+}
+.singalong.in-intro .sg-card {
+  opacity: 1;
+}
+.sg-card-kicker {
+  font: 800 calc(var(--u) * 0.85) / 1 'Archivo Variable', sans-serif;
+  letter-spacing: 0.3em;
+  color: var(--fill);
+}
+.sg-card-title {
+  margin-top: 0.4em;
+  font: 800 calc(var(--u) * 3.6) / 1.05 'Archivo Variable', 'Nirmala UI', sans-serif;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 0.06em 0 var(--outline),
+    0 0 0.4em rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sg-card-artist {
+  margin-top: 0.5em;
+  font: 600 calc(var(--u) * 1.3) / 1.2 'Archivo Variable', 'Nirmala UI', sans-serif;
+  opacity: 0.8;
+}
+.sg-stage,
+.sg-line {
+  position: absolute;
+}
+.sg-line {
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+  text-align: center;
+}
+.sg-row {
+  display: block;
+  white-space: nowrap;
+  font-family: 'Archivo Variable', 'Nirmala UI', sans-serif;
+  font-weight: 780;
+  letter-spacing: -0.01em;
+  line-height: 1.42;
+}
+/* base: white with a navy outline; fill: a copy of the word revealed left to right */
+.sg-line .u {
+  --p: 0;
+  position: relative;
+  color: #ffffff;
+  text-shadow:
+    0.045em 0 0 var(--outline),
+    -0.045em 0 0 var(--outline),
+    0 0.045em 0 var(--outline),
+    0 -0.045em 0 var(--outline),
+    0.035em 0.035em 0 var(--outline),
+    -0.035em -0.035em 0 var(--outline),
+    0.035em -0.035em 0 var(--outline),
+    -0.035em 0.035em 0 var(--outline),
+    0 0.09em 0.05em rgba(0, 0, 0, 0.45);
+}
+.sg-line .u::after {
+  content: attr(data-t);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--fill);
+  text-shadow: none;
+  clip-path: inset(-0.2em calc(100% - var(--p) * 100%) -0.2em -0.1em);
+  pointer-events: none;
+}
+.sg-line .u.bg::after {
+  opacity: 0.85;
+}
+.sg-line.voice-2 {
+  --fill: #5ce1ff;
+}
+.sg-line.voice-group {
+  --fill: #ff7ad9;
+}
+.sg-ball {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--h) * 0.026);
+  height: calc(var(--h) * 0.026);
+  margin: calc(var(--h) * -0.013) 0 0 calc(var(--h) * -0.013);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--fill) 45%, #e08a00);
+  box-shadow: 0 0 calc(var(--h) * 0.02) rgba(255, 210, 63, 0.7);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  will-change: transform;
+}
+.sg-ball.on {
+  opacity: 1;
+}
+.sg-count {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--h) * 0.018);
+  pointer-events: none;
+}
+.sg-dot {
+  width: calc(var(--h) * 0.018);
+  height: calc(var(--h) * 0.018);
+  border-radius: 50%;
+  background: var(--fill);
+  box-shadow: 0 0 0 calc(var(--h) * 0.004) var(--outline);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.sg-count[data-n='3'] .sg-dot,
+.sg-count[data-n='2'] .sg-dot:nth-child(-n + 2),
+.sg-count[data-n='1'] .sg-dot:first-child {
+  opacity: 1;
+}
+.singalong[data-context='off'] .sg-card-artist {
+  display: none;
+}
+.singalong .est-tag {
+  color: var(--fill);
+}

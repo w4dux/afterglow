@@ -1,0 +1,7 @@
+node_modules/
+dist/
+release/
+.e2e-fixtures/
+.e2e-shots/
+native/media-bridge/target/
+*.log

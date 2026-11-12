@@ -1,0 +1,176 @@
+/* MONSOON: a rainy window at night; words clear on the glass as they are sung. */
+.monsoon {
+  --u: 13px;
+  --h: 760px;
+  background: #081118;
+  color: #f1ece3;
+}
+.mo-night {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 70% 100%, #3a2a1f88, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 15% 85%, #12424a66, transparent 70%),
+    linear-gradient(180deg, #0b1820 0%, #0a141b 45%, #101b1f 100%);
+}
+.mo-city {
+  position: absolute;
+  inset: -4% -6%;
+  filter: blur(calc(var(--h) * 0.04));
+  pointer-events: none;
+  will-change: transform;
+}
+.mo-light {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.mo-light.l0 {
+  background: radial-gradient(circle, #ffb35c 0%, #ff8a3d88 45%, transparent 70%);
+}
+.mo-light.l1 {
+  background: radial-gradient(circle, #ff6f61 0%, #e0485388 45%, transparent 70%);
+}
+.mo-light.l2 {
+  background: radial-gradient(circle, #6fe0d4 0%, #2fa7a088 45%, transparent 70%);
+}
+.mo-rain {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  background-repeat: repeat;
+  pointer-events: none;
+  will-change: transform;
+}
+.mo-glass {
+  position: absolute;
+  inset: 0;
+  background-size: 420px 420px;
+  opacity: 0.32;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.mo-head {
+  position: absolute;
+  left: 8.5%;
+  right: 8.5%;
+  top: 11%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1ece322;
+  padding-bottom: 0.9em;
+  font: 600 calc(var(--u) * 0.78) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.32em;
+  color: #ffcf96;
+}
+.mo-tag {
+  font: 400 calc(var(--u) * 1.05) / 1 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
+  letter-spacing: 0.04em;
+  color: #f1ece399;
+}
+.mo-meta {
+  position: absolute;
+  left: 8.5%;
+  right: 30%;
+  top: 19%;
+  font: 500 calc(var(--u) * 0.88) / 1.3 'JetBrains Mono Variable', 'Nirmala UI', monospace;
+  letter-spacing: 0.04em;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mo-stage,
+.mo-line {
+  position: absolute;
+}
+.mo-line {
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+}
+.mo-row {
+  display: block;
+  white-space: nowrap;
+  font-family: 'Fraunces Variable', 'Nirmala UI', 'Noto Serif Bengali', Georgia, serif;
+  font-weight: 360;
+  font-variation-settings: 'SOFT' 100, 'opsz' 96;
+  letter-spacing: -0.015em;
+  line-height: 1.14;
+}
+.mo-line .u {
+  transition:
+    color 300ms ease,
+    filter 420ms ease,
+    opacity 420ms ease,
+    text-shadow 300ms ease;
+}
+.mo-line .u[data-s='future'] {
+  color: #cfe1e8;
+  opacity: 0.36;
+  filter: blur(0.035em);
+}
+.mo-line .u[data-s='arrived'],
+.mo-line .u[data-s='past'] {
+  color: #f3eee6;
+}
+.mo-line .u[data-s='active'] {
+  color: #ffd08a;
+  text-shadow:
+    0 0 0.45em #ff9d4455,
+    0 0 0.08em #ffd08a88;
+}
+.mo-next {
+  position: absolute;
+  left: 8.5%;
+  right: 20%;
+  bottom: 14%;
+  font: italic 380 calc(var(--u) * 1.45) / 1.35 'Fraunces Variable', 'Nirmala UI', Georgia, serif;
+  opacity: 0.42;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 400ms ease;
+}
+.monsoon.hide-next .mo-next {
+  opacity: 0;
+}
+.mo-gap {
+  position: absolute;
+  left: 8.5%;
+  right: 10%;
+  top: 42%;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+}
+.monsoon.in-gap .mo-gap {
+  opacity: 1;
+}
+.mo-gap-title {
+  font: 340 calc(var(--u) * 4.4) / 1.05 'Fraunces Variable', 'Nirmala UI', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+.mo-gap-time {
+  margin-top: 1.6em;
+  font: 600 calc(var(--u) * 0.8) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.26em;
+  color: #ffcf96;
+  opacity: 0.8;
+}
+.monsoon[data-context='off'] .mo-meta,
+.monsoon[data-context='off'] .mo-head {
+  display: none;
+}
+.monsoon .est-tag {
+  color: #ffcf96;
+}
+.monsoon.is-preview .mo-glass {
+  background-size: 160px 160px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mo-line .u {
+    transition: none;
+  }
+}

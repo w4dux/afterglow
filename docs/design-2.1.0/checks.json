@@ -1,0 +1,40 @@
+{
+  "errors": [],
+  "measurements": [
+    {
+      "theme": "cypher",
+      "words": 6,
+      "clipped": 0
+    },
+    {
+      "theme": "velvet",
+      "words": 12,
+      "clipped": 0
+    },
+    {
+      "theme": "feedback",
+      "words": 7,
+      "clipped": 0
+    },
+    {
+      "theme": "afterhours",
+      "words": 5,
+      "clipped": 0
+    },
+    {
+      "theme": "riot",
+      "words": 7,
+      "clipped": 0
+    },
+    {
+      "theme": "prism",
+      "words": 9,
+      "clipped": 0
+    }
+  ],
+  "themeCount": 10,
+  "selectionAndPersistence": true,
+  "reducedMotion": true,
+  "compactLongLines": true,
+  "nonLatinText": true
+}

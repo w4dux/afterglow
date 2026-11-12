@@ -1,0 +1,114 @@
+{
+  "generatedBy": "scripts/generate-demo.mjs",
+  "note": "Original synthesized demo material. Vocals are espeak-ng speech placed at exact word onsets.",
+  "tracks": [
+    {
+      "id": "night-shift",
+      "title": "Night Shift Cypher",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "Hip-Hop",
+      "bpm": 92,
+      "beatOffsetMs": 0,
+      "durationMs": 70326,
+      "audio": "demo/night-shift.ogg",
+      "lyrics": "demo/night-shift.elrc",
+      "artwork": "demo/night-shift.svg",
+      "palette": [
+        "#0d0d0d",
+        "#ffd60a",
+        "#f2efe6"
+      ]
+    },
+    {
+      "id": "chrome-hours",
+      "title": "Chrome Hours",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "Trap",
+      "bpm": 140,
+      "beatOffsetMs": 0,
+      "durationMs": 55643,
+      "audio": "demo/chrome-hours.ogg",
+      "lyrics": "demo/chrome-hours.elrc",
+      "artwork": "demo/chrome-hours.svg",
+      "palette": [
+        "#000000",
+        "#c8d3e0",
+        "#8a5cff"
+      ]
+    },
+    {
+      "id": "slow-honey",
+      "title": "Slow Honey",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "R&B",
+      "bpm": 72,
+      "beatOffsetMs": 0,
+      "durationMs": 49167,
+      "audio": "demo/slow-honey.ogg",
+      "lyrics": "demo/slow-honey.elrc",
+      "artwork": "demo/slow-honey.svg",
+      "palette": [
+        "#2a0f2e",
+        "#c4622d",
+        "#f6c7a1"
+      ]
+    },
+    {
+      "id": "sugar-signal",
+      "title": "Sugar Signal",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "Pop",
+      "bpm": 120,
+      "beatOffsetMs": 0,
+      "durationMs": 44500,
+      "audio": "demo/sugar-signal.ogg",
+      "lyrics": "demo/sugar-signal.elrc",
+      "artwork": "demo/sugar-signal.svg",
+      "palette": [
+        "#ff3d7f",
+        "#2f6bff",
+        "#ffcf00"
+      ]
+    },
+    {
+      "id": "static-hearts",
+      "title": "Static Hearts",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "Alternative Rock",
+      "bpm": 150,
+      "beatOffsetMs": 0,
+      "durationMs": 55300,
+      "audio": "demo/static-hearts.ogg",
+      "lyrics": "demo/static-hearts.elrc",
+      "artwork": "demo/static-hearts.svg",
+      "palette": [
+        "#e8e2d4",
+        "#111111",
+        "#d7261e"
+      ]
+    },
+    {
+      "id": "low-tide",
+      "title": "Low Tide Lanterns",
+      "artist": "Afterglow Demo",
+      "album": "Afterglow Demo Reel",
+      "genre": "Ambient",
+      "bpm": 64,
+      "beatOffsetMs": 0,
+      "durationMs": 55000,
+      "audio": "demo/low-tide.ogg",
+      "lyrics": "demo/low-tide.elrc",
+      "artwork": "demo/low-tide.svg",
+      "palette": [
+        "#1d2b3a",
+        "#f2c8a0",
+        "#7f9db5"
+      ]
+    }
+  ]
+}

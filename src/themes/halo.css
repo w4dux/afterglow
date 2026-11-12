@@ -1,0 +1,187 @@
+/* HALO: melodic rap. A ring of light, centred lowercase lines, words coming into focus. */
+.halo {
+  --glow: #8f7bff;
+  --glow2: #7fd4ff;
+  --u: 13px;
+  --h: 760px;
+  background: #07081a;
+  color: #f4f2ff;
+}
+.ha-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 62% 55% at 50% 50%, color-mix(in srgb, var(--glow) 26%, transparent), transparent 72%),
+    radial-gradient(ellipse 120% 70% at 50% 120%, color-mix(in srgb, var(--glow2) 14%, transparent), transparent 70%),
+    linear-gradient(180deg, #0c0b25 0%, #07081a 55%, #04050e 100%);
+}
+.ha-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--h) * 0.8);
+  height: calc(var(--h) * 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: max(1.5px, calc(var(--h) * 0.0026)) solid color-mix(in srgb, #ffffff 72%, var(--glow));
+  box-shadow:
+    0 0 calc(var(--h) * 0.05) calc(var(--h) * 0.008) color-mix(in srgb, var(--glow) 75%, transparent),
+    0 0 calc(var(--h) * 0.16) calc(var(--h) * 0.02) color-mix(in srgb, var(--glow) 32%, transparent),
+    inset 0 0 calc(var(--h) * 0.06) color-mix(in srgb, var(--glow2) 40%, transparent);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.ha-ring-b {
+  width: calc(var(--h) * 0.96);
+  height: calc(var(--h) * 0.96);
+  border: 1px solid color-mix(in srgb, var(--glow2) 30%, transparent);
+  box-shadow: none;
+  opacity: 0.45;
+}
+.ha-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ha-mote {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.32;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--glow2) 80%, #fff);
+  /* moved every frame: own compositor layer, so nothing else is repainted */
+  will-change: transform;
+}
+.ha-mote:nth-child(3n) {
+  width: 2px;
+  height: 2px;
+  opacity: 0.22;
+}
+.ha-mote:nth-child(4n) {
+  width: 4px;
+  height: 4px;
+  opacity: 0.16;
+  filter: blur(1px);
+}
+.ha-meta {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(calc(var(--h) * 0.5), 84%);
+  top: 20%;
+  text-align: center;
+  font: 500 calc(var(--u) * 0.95) / 1.3 'Inter Variable', sans-serif;
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ha-stage,
+.ha-line {
+  position: absolute;
+}
+.ha-line {
+  left: 0;
+  width: 100%;
+  visibility: hidden;
+  text-align: center;
+  transform-origin: 50% 50%;
+}
+.ha-row {
+  display: block;
+  white-space: nowrap;
+  font-family: 'Inter Variable', 'Nirmala UI', sans-serif;
+  font-weight: 680;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+.ha-line .u {
+  transition:
+    color 220ms ease,
+    filter 280ms ease,
+    opacity 280ms ease,
+    text-shadow 280ms ease;
+}
+.ha-line .u[data-s='future'] {
+  color: #dcd8ff;
+  opacity: 0.3;
+  filter: blur(0.045em);
+}
+.ha-line .u[data-s='arrived'],
+.ha-line .u[data-s='past'] {
+  color: #f4f2ff;
+  opacity: 0.93;
+}
+.ha-line .u[data-s='active'] {
+  color: #ffffff;
+  text-shadow:
+    0 0 0.32em color-mix(in srgb, var(--glow) 85%, transparent),
+    0 0 0.07em #ffffff;
+}
+.ha-next {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(var(--h) * 0.6), 84%);
+  bottom: 20.5%;
+  text-align: center;
+  font: 500 calc(var(--u) * 1.4) / 1.35 'Inter Variable', 'Nirmala UI', sans-serif;
+  letter-spacing: -0.01em;
+  opacity: 0.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 300ms ease;
+}
+.halo.hide-next .ha-next {
+  opacity: 0;
+}
+.ha-gap {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 43%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 420ms ease;
+  pointer-events: none;
+}
+.halo.in-gap .ha-gap {
+  opacity: 1;
+}
+.ha-gap-title {
+  font: 700 calc(var(--u) * 3.6) / 1.05 'Inter Variable', sans-serif;
+  letter-spacing: -0.04em;
+}
+.ha-gap-time {
+  margin-top: 1.4em;
+  font: 500 calc(var(--u) * 0.85) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+.ha-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.halo[data-context='off'] .ha-meta {
+  display: none;
+}
+.halo .est-tag {
+  color: #d9d3ff;
+}
+.halo.is-preview .ha-dust {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ha-line .u {
+    transition: none;
+  }
+}

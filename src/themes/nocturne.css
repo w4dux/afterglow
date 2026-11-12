@@ -1,0 +1,232 @@
+/* NOCTURNE — trap / dark electronic */
+.nocturne {
+  --chrome: linear-gradient(180deg, #ffffff 0%, #dfe7f1 38%, #8d99ab 50%, #3b4352 53%, #c7d2e2 78%, #f4f8ff 100%);
+  --neon: #9b6bff;
+  --ice: #8ff3ff;
+  --pulse: 0;
+  --fog-x: 0%;
+  --fog-y: 0%;
+  background: #000;
+  color: #dfe7f1;
+}
+.nc-fog {
+  position: absolute;
+  width: 90vmax;
+  height: 90vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.nc-fog.a {
+  left: -30vmax;
+  top: -40vmax;
+  background: radial-gradient(closest-side, rgba(110, 70, 255, 0.28), transparent 70%);
+  transform: translate(var(--fog-x), var(--fog-y));
+}
+.nc-fog.b {
+  right: -35vmax;
+  bottom: -55vmax;
+  background: radial-gradient(closest-side, rgba(40, 200, 255, 0.16), transparent 70%);
+  transform: translate(calc(var(--fog-x) * -1), var(--fog-y));
+}
+.nc-grid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  bottom: 0;
+  perspective: 360px;
+  perspective-origin: 50% 0%;
+  overflow: hidden;
+  mask-image: linear-gradient(transparent 0%, #000 30%, #000 100%);
+  opacity: calc(0.5 + var(--pulse) * 0.3);
+}
+.nc-grid-plane {
+  position: absolute;
+  left: -60%;
+  right: -60%;
+  top: 0;
+  height: 260%;
+  transform-origin: 50% 0;
+  transform: rotateX(74deg);
+  overflow: hidden;
+}
+.nc-grid-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  height: 110%;
+  background-image:
+    linear-gradient(rgba(155, 107, 255, 0.75) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(155, 107, 255, 0.45) 2px, transparent 2px);
+  background-size: 100% 10%, 4% 100%;
+}
+.nc-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(143, 243, 255, 0.55) 15%, rgba(155, 107, 255, 0.7) 85%, transparent);
+  box-shadow: 0 0 calc(10px + var(--pulse) * 18px) rgba(155, 107, 255, 0.7);
+}
+.nc-spark {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 10px #fff,
+    0 0 26px var(--ice);
+}
+.nc-art {
+  position: absolute;
+  right: 4%;
+  top: max(64px, 9%);
+  width: min(13vh, 120px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: grayscale(0.85) contrast(1.2) brightness(0.8);
+  border: 1px solid rgba(155, 107, 255, 0.6);
+  box-shadow: 0 0 24px rgba(155, 107, 255, 0.35);
+  display: none;
+}
+.nocturne.has-art .nc-art {
+  display: block;
+}
+.is-preview .nc-art {
+  top: 8%;
+  width: 14%;
+}
+.nc-label {
+  position: absolute;
+  left: 4%;
+  top: max(68px, 10%);
+  font: 500 var(--u) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(223, 231, 241, 0.45);
+}
+.is-preview .nc-label {
+  top: 9%;
+}
+.nc-stage {
+  position: absolute;
+}
+.nc-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  visibility: hidden;
+  transform-origin: 50% 50%;
+}
+.nc-row {
+  display: block;
+  white-space: nowrap;
+  font-family: 'Unbounded Variable', sans-serif;
+  font-weight: 640;
+  line-height: 1.12;
+  letter-spacing: 0.03em;
+}
+.nc-line .u {
+  background: var(--chrome);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform-origin: 0 50%;
+}
+.nc-line .u[data-s='future'] {
+  background: none;
+  color: transparent;
+  -webkit-text-stroke: max(1px, 0.012em) rgba(223, 231, 241, 0.34);
+}
+.nc-line .u[data-s='active'] {
+  filter: drop-shadow(0 0 0.18em rgba(155, 107, 255, 0.85));
+}
+.nc-line .u[data-s='past'],
+.nc-line .u[data-s='arrived'] {
+  opacity: 0.88;
+}
+.nc-underline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: max(2px, 0.35vh);
+  background: linear-gradient(90deg, var(--ice), var(--neon));
+  box-shadow: 0 0 14px var(--neon);
+  opacity: 0;
+  z-index: 2;
+}
+.nc-prev {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 18%;
+  text-align: center;
+  font: 600 calc(var(--u) * 1.4) / 1.2 'Unbounded Variable', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(223, 231, 241, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nc-next {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: calc(60% + 1.6em);
+  text-align: center;
+  font: 500 var(--u) / 1.3 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(143, 243, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nc-gap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 38%;
+  text-align: center;
+  opacity: 0;
+}
+.nc-gap-text {
+  font: 300 calc(var(--u) * 3.4) / 1.1 'Unbounded Variable', sans-serif;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(223, 231, 241, 0.75);
+}
+.nc-gap-clock {
+  margin-top: 1.2em;
+  font: 500 var(--u) / 1 'JetBrains Mono Variable', monospace;
+  letter-spacing: 0.3em;
+  color: rgba(143, 243, 255, 0.8);
+}
+.nc-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  pointer-events: none;
+}
+.nc-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  pointer-events: none;
+}
+.nocturne.in-gap .nc-prev,
+.nocturne.in-gap .nc-next {
+  opacity: 0 !important;
+}

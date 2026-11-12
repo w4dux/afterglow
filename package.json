@@ -2,8 +2,9 @@
   "name": "afterglow-stage",
   "productName": "Afterglow",
   "version": "2.6.0",
-  "description": "Full-screen kinetic lyrics companion for Windows",
+  "description": "Full-screen kinetic lyrics companion for Windows and Linux",
   "main": "dist/electron/main.cjs",
+  "desktopName": "afterglow.desktop",
   "author": "w4dux",
   "repository": "github:w4dux/afterglow",
   "license": "MIT",
@@ -20,10 +21,13 @@
     "start": "electron .",
     "package:win": "npm run build && electron-builder --win --x64 --publish never",
     "demo:assets": "node scripts/generate-demo.mjs",
-    "package:linux": "npm run build && electron-builder --linux dir --publish never",
+    "package:linux": "npm run build && electron-builder --linux --x64 --publish never",
     "measure": "node scripts/measure-sync.mjs http://127.0.0.1:5199/ docs/measurements/chromium-audio-clock.json",
     "e2e:controls": "node tests/e2e/controls-autohide.mjs",
-    "e2e": "bash tests/e2e/make-fixtures.sh .e2e-fixtures && node tests/e2e/electron-smoke.mjs .e2e-fixtures .e2e-shots"
+    "e2e": "bash tests/e2e/make-fixtures.sh .e2e-fixtures && node tests/e2e/electron-smoke.mjs .e2e-fixtures .e2e-shots",
+    "build:bridge:linux": "bash native/media-bridge/build.sh linux",
+    "build:bridge:win": "bash native/media-bridge/build.sh windows",
+    "package:linux:dir": "npm run build && electron-builder --linux dir --publish never"
   },
   "devDependencies": {
     "@fontsource-variable/archivo": "^5.3.0",
@@ -68,15 +72,6 @@
       "build/icon.png",
       "package.json"
     ],
-    "extraResources": [
-      {
-        "from": "resources/bin",
-        "to": "bin",
-        "filter": [
-          "*.exe"
-        ]
-      }
-    ],
     "asar": true,
     "win": {
       "target": [
@@ -96,7 +91,16 @@
       "icon": "build/icon.ico",
       "signAndEditExecutable": true,
       "artifactName": "Afterglow-${version}-win-${arch}.${ext}",
-      "signExecutable": false
+      "signExecutable": false,
+      "extraResources": [
+        {
+          "from": "resources/bin",
+          "to": "bin",
+          "filter": [
+            "afterglow-media-bridge.exe"
+          ]
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,
@@ -109,14 +113,71 @@
     },
     "linux": {
       "target": [
-        "dir"
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
       ],
       "icon": "build/icon.png",
-      "category": "AudioVideo"
+      "category": "AudioVideo",
+      "executableName": "afterglow",
+      "syncDesktopName": true,
+      "synopsis": "Full-screen kinetic lyrics for the music you play",
+      "description": "Afterglow shows full-screen, time-synced kinetic lyrics for Spotify and other MPRIS media players, local audio files, and an offline demo.",
+      "maintainer": "w4dux <w4dux@users.noreply.github.com>",
+      "artifactName": "Afterglow-${version}-linux-${arch}.${ext}",
+      "desktop": {
+        "entry": {
+          "Name": "Afterglow",
+          "GenericName": "Lyrics",
+          "Comment": "Full-screen kinetic lyrics for the music you play",
+          "Keywords": "lyrics;karaoke;spotify;music;"
+        }
+      },
+      "extraResources": [
+        {
+          "from": "resources/bin",
+          "to": "bin",
+          "filter": [
+            "afterglow-media-bridge"
+          ]
+        }
+      ]
     },
     "electronLanguages": [
       "en-US"
     ],
-    "compression": "normal"
+    "compression": "normal",
+    "deb": {
+      "artifactName": "afterglow_${version}_amd64.${ext}",
+      "depends": [
+        "libgtk-3-0",
+        "libnotify4",
+        "libnss3",
+        "libxss1",
+        "libxtst6",
+        "xdg-utils",
+        "libatspi2.0-0",
+        "libuuid1",
+        "libsecret-1-0"
+      ]
+    },
+    "appImage": {
+      "artifactName": "Afterglow-${version}-x86_64.${ext}"
+    }
   }
 }

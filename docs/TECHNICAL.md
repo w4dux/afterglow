@@ -24,7 +24,8 @@ npm run dev
 | `npm start` | Run the built app |
 | `npm run e2e:controls` | Drives the built app with mouse and keyboard to check the controls hide and return |
 | `npm run package:win` | Windows x64 installer + zip into `release/` |
-| `npm run build:bridge` | Build the media bridge from `native/media-bridge` (Rust; a prebuilt copy is in `resources/bin`) |
+| `npm run package:linux` | Linux x64 AppImage, .deb and .tar.gz into `release/` (`package:linux:dir` for an unpacked folder only) |
+| `npm run build:bridge` | Build the media bridge from `native/media-bridge` (Rust; prebuilt copies are in `resources/bin`). `build:bridge:win` cross-compiles the Windows .exe (mingw); `build:bridge:linux` builds a static musl Linux binary |
 | `npm run demo:assets` | Regenerate the demo songs (needs `espeak-ng`, `ffmpeg`) |
 | `npm run e2e` | Electron end-to-end checks (bash; run under `xvfb-run` on Linux) |
 
@@ -131,7 +132,25 @@ The app converts each update with `sampledAt = performance.now() − (Date.now()
 
 There are no Spotify credentials, cookies, tokens or private endpoints: Afterglow only sees what Spotify publishes to Windows' media overlay.
 
-**Verified:** the bridge cross-compiles for Windows x64, and under Wine it starts, attempts WinRT activation, and reports `unavailable` cleanly (Wine does not implement GSMTC). On Linux the app shows *"System media is unavailable"*. Adapter, conversion, provisional-track logic and engine behaviour are unit-tested with simulated observations, which are labelled as simulation.
+### Linux: MPRIS
+
+On Linux the same bridge (`native/media-bridge/src/linux.rs`, a static musl binary, `resources/bin/afterglow-media-bridge`) follows MPRIS players (`org.mpris.MediaPlayer2.*`) on the D-Bus session bus and writes the same NDJSON, so the renderer, adapter and sync engine are unchanged.
+
+- **Player choice:** the preferred app (Spotify by default) if present, else the player that is playing, else any. Other players can be picked in Music & lyrics.
+- **Position:** MPRIS never announces `Position` changes, so the bridge reads it once per second while playing (and on every play/pause/track change). It keeps an anchor (position, wall time of the read, as `lastUpdatedWallMs`) and only moves it when a read disagrees with the anchor's extrapolation by more than 150 ms, or on `Seeked`. Read jitter therefore never reaches the sync engine; only real corrections do.
+- **Metadata:** `xesam:title/artist/album/albumArtist/genre`, `mpris:length` and `mpris:trackid` (used for `SetPosition` when seeking).
+- **Artwork:** `file://` art is read by the bridge; `http(s)` art (Spotify's `i.scdn.co`) is passed on as a URL and fetched by the Electron main process.
+- **Controls:** Play, Pause, PlayPause, Next, Previous, SetPosition (or a relative Seek without a track id), gated by `CanControl`/`CanPlay`/`CanPause`/`CanGoNext`/`CanGoPrevious`/`CanSeek`.
+
+`native/media-bridge/examples/fake_mpris_player.rs` is a Spotify-like test player (Position readable but not announced, `Seeked` on SetPosition). To try the bridge without Spotify:
+
+```bash
+cd native/media-bridge
+cargo build --release --examples
+dbus-run-session -- bash -c 'target/release/examples/fake_mpris_player spotify & sleep 0.5; target/release/afterglow-media-bridge'
+```
+
+**Verified:** the bridge cross-compiles for Windows x64, and under Wine it starts, attempts WinRT activation, and reports `unavailable` cleanly (Wine does not implement GSMTC). On Linux the MPRIS backend was tested against the fake player above, both with the bridge alone and with the built app and the packaged `linux-unpacked` app under Xvfb (following, 2 s of playback advanced 2005 ms, pause froze). Adapter, conversion, provisional-track logic and engine behaviour are unit-tested with simulated observations, which are labelled as simulation.
 
 **Field test (Windows PC, Spotify from the Microsoft Store, v2.0.0):** the bridge connected to `SpotifyAB.SpotifyMusic…!Spotify`. Play/pause, next/previous and seeking from Afterglow controlled Spotify. LRCLIB lookups worked, and timing was reported as good. The diagnostics overlay showed:
 - Spotify fired many timeline events, but the *position* changed about every 3.8 s while playing. Extrapolation between updates mostly needed only small slews.

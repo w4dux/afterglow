@@ -3,6 +3,7 @@ import type { Observation } from '../core/sync/SyncEngine';
 import { trackKeyOf } from '../core/themes/matcher';
 import type { BridgeMessage, BridgeState } from '../shared/api';
 import { native } from '../app/platform';
+import { mediaSessionLabel } from '../app/os';
 import type { AdapterCapabilities, AdapterEvents, PlaybackAdapter, TrackInfo } from './adapters';
 
 export interface SystemInfo {
@@ -22,6 +23,8 @@ export interface SystemInfo {
 
 let epochCounter = 1000;
 
+const sessionLabel = () => mediaSessionLabel(native?.platform);
+
 export function appDisplayName(app: string | null | undefined): string {
   if (!app) return 'Media app';
   const a = app.toLowerCase();
@@ -32,12 +35,15 @@ export function appDisplayName(app: string | null | undefined): string {
   if (a.includes('zune') || a.includes('media player')) return 'Media Player';
   if (a.includes('tidal')) return 'TIDAL';
   if (a.includes('apple') || a.includes('itunes')) return 'Apple Music';
+  if (a === 'vlc') return 'VLC';
+  if (a.includes('chromium')) return 'Chromium';
   return app.replace(/\.exe$/i, '').split(/[!\\.]/).pop() || app;
 }
 
 /**
- * Follows a Windows media session (Spotify desktop by default) through the native
- * GSMTC bridge. Positions are converted with the session's LastUpdatedTime:
+ * Follows a system media session (Spotify desktop by default) through the native
+ * bridge: GSMTC on Windows, MPRIS on Linux (which reports the time it read the position
+ * as LastUpdatedTime, so the same conversion applies). Positions are converted with the session's LastUpdatedTime:
  *   sampledAt = performance.now() - (Date.now() - lastUpdatedWallMs)
  * so a timeline published long ago is extrapolated from when it was valid, and pipe
  * latency is included. If the player has not published a timeline for a new track
@@ -67,7 +73,7 @@ export class SystemMediaAdapter implements PlaybackAdapter {
     private readonly preferredApp: string,
   ) {
     if (!native) {
-      this.setInfo({ bridge: 'unavailable', message: 'System media sessions need the Windows desktop app.' });
+      this.setInfo({ bridge: 'unavailable', message: 'System media sessions need the Afterglow desktop app (Windows or Linux).' });
       return;
     }
     this.unsub = native.onBridge((m) => this.handle(m));
@@ -151,7 +157,7 @@ export class SystemMediaAdapter implements PlaybackAdapter {
       album: media.album || undefined,
       durationMs: dur,
       source: 'system',
-      sourceLabel: `${app} · Windows media session`,
+      sourceLabel: `${app} · ${sessionLabel()}`,
       app: st.app ?? undefined,
       genres,
       artworkUrl: artworkUrl ?? this.artwork.get(this.artKey(st)),
@@ -171,7 +177,7 @@ export class SystemMediaAdapter implements PlaybackAdapter {
       const key = 'system:none';
       if (this.trackKey !== key) {
         this.trackKey = key;
-        this.ev.track({ key, source: 'system', sourceLabel: 'Windows media session', genres: [] });
+        this.ev.track({ key, source: 'system', sourceLabel: sessionLabel(), genres: [] });
       }
       this.observe({ positionMs: 0, sampledAt: nowPerf, playing: false, cause: 'state', timeline: false });
       this.setInfo({ app: null, status: 'none', lastCause: s.cause, counts });

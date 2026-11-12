@@ -8,6 +8,7 @@ function on<T>(channel: string, cb: (v: T) => void): () => void {
 }
 
 const api: AfterglowApi = {
+  platform: process.platform,
   info: () => ipcRenderer.invoke('app:info'),
   loadSettings: () => ipcRenderer.invoke('settings:load'),
   saveSettings: (s) => ipcRenderer.invoke('settings:save', s),

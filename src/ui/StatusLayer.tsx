@@ -1,5 +1,6 @@
 import { controller } from '../app/controller';
-import { isElectron } from '../app/platform';
+import { isElectron, native } from '../app/platform';
+import { mediaControlsName } from '../app/os';
 import { setUi, useApp } from '../app/store';
 import { WhereWeLooked } from './panels/SourcesPanel';
 
@@ -29,11 +30,12 @@ export function StatusLayer() {
   const sync = useApp((s) => s.sync);
   const online = useApp((s) => s.settings.sources.onlineLyrics);
   const doc = lyrics.doc;
+  const controls = mediaControlsName(useApp.getState().info?.platform ?? native?.platform);
 
   if (source === 'system' && system && (system.bridge === 'unavailable' || system.bridge === 'error')) {
     return (
-      <Card title="Can’t connect to Windows media controls">
-        <p>{system.message ?? 'Afterglow could not start its connection to Windows’ media controls.'}</p>
+      <Card title={`Can’t connect to ${controls}`}>
+        <p>{system.message ?? `Afterglow could not start its connection to ${controls}.`}</p>
         <div className="row-actions">
           <button className="chip strong" onClick={() => controller.followSystem(false)}>
             Stop following
@@ -48,7 +50,7 @@ export function StatusLayer() {
   if (source === 'system' && (!track || track.key === 'system:none')) {
     return (
       <Card title="Press play in Spotify">
-        <p>The lyrics appear as soon as a song starts. Afterglow also follows other apps that show up in Windows’ media controls.</p>
+        <p>The lyrics appear as soon as a song starts. Afterglow also follows other apps that show up in {controls}.</p>
         <div className="row-actions">
           <button className="chip" onClick={() => void controller.playDemo(useApp.getState().demos[0]?.id)}>
             Try the demo instead

@@ -102,7 +102,7 @@ export type BridgeMessage =
   | { type: 'status'; available: boolean; error?: string }
   | { type: 'sessions'; sessions: { app: string; status: string }[]; systemCurrent?: string | null; attached?: string | null; preferred?: string }
   | BridgeState
-  | { type: 'artwork'; app: string; title: string; artist: string; mime: string | null; base64: string | null }
+  | { type: 'artwork'; app: string; title: string; artist: string; mime: string | null; base64: string | null; /** Linux: image URL, fetched by the main process. */ url?: string }
   | { type: 'ack'; id: number; ok: boolean; error?: string | null }
   | { type: 'bridge-exit'; code: number | null; signal: string | null; restarting: boolean; error?: string }
   | { type: 'bridge-unavailable'; reason: string };
@@ -123,6 +123,8 @@ export interface AppInfo {
 }
 
 export interface AfterglowApi {
+  /** Node's process.platform of the desktop app ('win32', 'linux', ...). */
+  platform: string;
   info(): Promise<AppInfo>;
   loadSettings(): Promise<unknown>;
   saveSettings(settings: unknown): Promise<void>;

@@ -6,8 +6,8 @@ import type { MediaPeek } from '../shared/api';
 import { Toggle } from './panels/Panel';
 
 /**
- * First run (Windows): one question, one click. "Follow Spotify" turns on following
- * the Windows media session and, unless unticked, online lyric lookup. The demo stays
+ * First run (Windows, Linux): one question, one click. "Follow Spotify" turns on following
+ * the system media session and, unless unticked, online lyric lookup. The demo stays
  * one click away. Shown once; settings can be changed later in Music & lyrics (S).
  */
 export function Welcome() {
@@ -58,7 +58,7 @@ export function Welcome() {
             Try the demo first
           </button>
         </div>
-        <p className="note">Works with the Spotify app on Windows without logging in. You can change this any time under Music &amp; lyrics (S).</p>
+        <p className="note">Works with the Spotify app on {native?.platform === 'linux' ? 'Linux' : 'Windows'} without logging in. You can change this any time under Music &amp; lyrics (S).</p>
       </div>
     </div>
   );

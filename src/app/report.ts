@@ -72,7 +72,7 @@ export function buildReport(r: ReportInput): string {
   ];
   if (r.system) {
     out.push(
-      '## Windows media session',
+      `## ${r.info?.platform === 'linux' ? 'MPRIS' : 'Windows'} media session`,
       `bridge ${r.system.bridge}${r.system.message ? ` (${r.system.message})` : ''} · app ${r.system.app ?? '-'} · status ${r.system.status ?? '-'}`,
       `timeline ${r.system.timelineAvailable ?? '-'} · update interval ${n(r.system.timelineIntervalMs)} ms · counts ${Object.entries(r.system.counts).map(([k, v]) => `${k}:${v}`).join(' ')}`,
       '',

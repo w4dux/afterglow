@@ -96,7 +96,7 @@
 .ha-row {
   display: block;
   white-space: nowrap;
-  font-family: 'Inter Variable', 'Nirmala UI', sans-serif;
+  font-family: 'Inter Variable', 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
   font-weight: 680;
   letter-spacing: -0.035em;
   line-height: 1.08;
@@ -131,7 +131,7 @@
   width: min(calc(var(--h) * 0.6), 84%);
   bottom: 20.5%;
   text-align: center;
-  font: 500 calc(var(--u) * 1.4) / 1.35 'Inter Variable', 'Nirmala UI', sans-serif;
+  font: 500 calc(var(--u) * 1.4) / 1.35 'Inter Variable', 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
   letter-spacing: -0.01em;
   opacity: 0.4;
   white-space: nowrap;

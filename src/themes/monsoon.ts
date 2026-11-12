@@ -26,7 +26,7 @@ import {
  * MONSOON: Bangla and South Asian band music, ballads, rainy-night songs. A window at
  * night: rain runs down the glass over warm, out-of-focus city lights. Upcoming words
  * sit fogged on the glass and clear as they are sung. Rain and drifting lights are
- * functions of lyric time. Bengali text falls back to Windows' Nirmala UI.
+ * functions of lyric time. Bengali text falls back to Nirmala UI (Windows) or Noto Bengali (Linux).
  */
 export const MONSOON_FONT: FontSpec = { family: 'Fraunces Variable', weight: 360, tracking: -0.015, lineHeight: 1.14 };
 

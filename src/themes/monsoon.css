@@ -74,7 +74,7 @@
   left: 8.5%;
   right: 30%;
   top: 19%;
-  font: 500 calc(var(--u) * 0.88) / 1.3 'JetBrains Mono Variable', 'Nirmala UI', monospace;
+  font: 500 calc(var(--u) * 0.88) / 1.3 'JetBrains Mono Variable', 'Nirmala UI', 'Noto Sans Bengali', monospace;
   letter-spacing: 0.04em;
   opacity: 0.6;
   white-space: nowrap;
@@ -126,7 +126,7 @@
   left: 8.5%;
   right: 20%;
   bottom: 14%;
-  font: italic 380 calc(var(--u) * 1.45) / 1.35 'Fraunces Variable', 'Nirmala UI', Georgia, serif;
+  font: italic 380 calc(var(--u) * 1.45) / 1.35 'Fraunces Variable', 'Nirmala UI', 'Noto Serif Bengali', Georgia, serif;
   opacity: 0.42;
   white-space: nowrap;
   overflow: hidden;
@@ -149,7 +149,7 @@
   opacity: 1;
 }
 .mo-gap-title {
-  font: 340 calc(var(--u) * 4.4) / 1.05 'Fraunces Variable', 'Nirmala UI', Georgia, serif;
+  font: 340 calc(var(--u) * 4.4) / 1.05 'Fraunces Variable', 'Nirmala UI', 'Noto Serif Bengali', Georgia, serif;
   letter-spacing: -0.02em;
 }
 .mo-gap-time {

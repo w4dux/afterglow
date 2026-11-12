@@ -1,5 +1,7 @@
 import { controller } from '../../app/controller';
 import { useApp } from '../../app/store';
+import { osName } from '../../app/os';
+import { native } from '../../app/platform';
 import type { MotionTreatment } from '../../core/settings/schema';
 import { Panel, Segmented, Toggle } from './Panel';
 
@@ -34,7 +36,7 @@ export function MotionPanel() {
       <label className="field">
         Reduced motion
         <select value={m.reduced} onChange={(e) => set({ reduced: e.target.value as typeof m.reduced })}>
-          <option value="system">Follow Windows setting ({reducedSys ? 'on' : 'off'})</option>
+          <option value="system">Follow {osName(native?.platform)} setting ({reducedSys ? 'on' : 'off'})</option>
           <option value="on">Always on</option>
           <option value="off">Off</option>
         </select>

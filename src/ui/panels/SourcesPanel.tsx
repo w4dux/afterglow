@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { controller } from '../../app/controller';
 import { isElectron, native } from '../../app/platform';
+import { canFollowMedia, mediaControlsName } from '../../app/os';
 import { type AppState, setUi, useApp } from '../../app/store';
 import type { LyricSource } from '../../core/lyrics/model';
 import { appDisplayName } from '../../playback/SystemMediaAdapter';
@@ -82,7 +83,7 @@ export function SourcesPanel() {
                 label="Genre from Apple’s catalogue"
                 checked={settings.sources.providers.catalog}
                 onChange={(v) => controller.updateSettings((s) => ({ ...s, sources: { ...s.sources, providers: { ...s.sources.providers, catalog: v } } }))}
-                hint="Spotify does not tell Windows a song’s genre; Apple’s public catalogue does, which helps Auto pick a theme. Also gives the song length and, if the player shows none, artwork."
+                hint="Spotify does not publish a song’s genre to the system; Apple’s public catalogue does, which helps Auto pick a theme. Also gives the song length and, if the player shows none, artwork."
               />
             </div>
           )}
@@ -148,15 +149,16 @@ function FollowCard() {
   const settings = useApp((s) => s.settings);
   const following = source === 'system';
 
-  if (!isElectron) return <p className="note">Following Spotify works in the Afterglow desktop app for Windows.</p>;
-  if (info && info.platform !== 'win32') return <p className="note">Following Spotify needs Windows (this PC runs {info.platform}).</p>;
+  if (!isElectron) return <p className="note">Following Spotify works in the Afterglow desktop app for Windows and Linux.</p>;
+  if (info && !canFollowMedia(info.platform)) return <p className="note">Following Spotify needs Windows or Linux (this computer runs {info.platform}).</p>;
+  const controls = mediaControlsName(info?.platform ?? native?.platform);
 
   if (!following) {
     return (
       <div className="follow-card">
         <div className="follow-text">
           <b>Show lyrics for Spotify</b>
-          <small>Afterglow follows whatever plays in Spotify, or another app that shows up in Windows’ media controls. No login needed.</small>
+          <small>Afterglow follows whatever plays in Spotify, or another app that shows up in {controls}. No login needed.</small>
         </div>
         <button className="chip strong big" onClick={() => controller.followSystem(true)}>
           Follow Spotify
@@ -168,7 +170,7 @@ function FollowCard() {
   const app = system?.app ? appDisplayName(system.app) : 'Spotify';
   const broken = system?.bridge === 'unavailable' || system?.bridge === 'error';
   const status = broken
-    ? `Can’t connect to Windows media controls${system?.message ? `: ${system.message}` : ''}`
+    ? `Can’t connect to ${controls}${system?.message ? `: ${system.message}` : ''}`
     : !track || track.key === 'system:none'
       ? 'Waiting for music: press play in Spotify.'
       : `Playing “${track.title}”${track.artist ? ` by ${track.artist}` : ''}`;
@@ -216,7 +218,7 @@ function FollowCard() {
             <div>
               Session: <b>{system.app ?? 'none'}</b> {system.status && `(${system.status})`}
             </div>
-            <div>Reads only what the app publishes to Windows’ media controls. No Spotify login, API keys, tokens or private endpoints.</div>
+            <div>Reads only what the app publishes to {controls}. No Spotify login, API keys, tokens or private endpoints.</div>
           </div>
         </details>
       )}

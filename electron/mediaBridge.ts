@@ -4,8 +4,34 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import type { BridgeCommand, BridgeMessage, MediaPeek } from '../src/shared/api';
 
+/** File name of the bridge for this OS, or null where there is no backend. */
+export function bridgeFileName(platform: NodeJS.Platform = process.platform): string | null {
+  if (platform === 'win32') return 'afterglow-media-bridge.exe'; // GSMTC
+  if (platform === 'linux') return 'afterglow-media-bridge'; // MPRIS over D-Bus
+  return null;
+}
+
 /**
- * Supervises the native GSMTC bridge process. Lines on its stdout are JSON messages;
+ * Linux players publish artwork as a URL (Spotify: https://i.scdn.co/...). The bridge
+ * passes those on; they are fetched here so the renderer gets the usual data URL.
+ */
+export async function fetchArtwork(url: string, timeoutMs = 6000): Promise<{ mime: string; base64: string } | null> {
+  if (!/^https?:\/\//i.test(url)) return null;
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });
+    if (!res.ok) return null;
+    const mime = (res.headers.get('content-type') ?? 'image/jpeg').split(';')[0].trim();
+    if (!mime.startsWith('image/')) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length === 0 || buf.length > 4 * 1024 * 1024) return null;
+    return { mime, base64: buf.toString('base64') };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Supervises the native media bridge process (GSMTC on Windows, MPRIS on Linux). Lines on its stdout are JSON messages;
  * the receipt wall time is attached so the renderer can account for pipe latency.
  * Restarts with backoff if it crashes; never restarts after an explicit stop.
  */
@@ -23,11 +49,12 @@ export class MediaBridge {
   constructor(private readonly send: (msg: BridgeMessage) => void) {}
 
   static executablePath(): string | null {
-    if (process.platform !== 'win32') return null;
+    const file = bridgeFileName();
+    if (!file) return null;
     const candidates = [
-      path.join(process.resourcesPath ?? '', 'bin', 'afterglow-media-bridge.exe'),
-      path.join(app.getAppPath(), 'resources', 'bin', 'afterglow-media-bridge.exe'),
-      path.join(app.getAppPath(), '..', 'resources', 'bin', 'afterglow-media-bridge.exe'),
+      path.join(process.resourcesPath ?? '', 'bin', file),
+      path.join(app.getAppPath(), 'resources', 'bin', file),
+      path.join(app.getAppPath(), '..', 'resources', 'bin', file),
     ];
     return candidates.find((p) => existsSync(p)) ?? null;
   }
@@ -89,10 +116,10 @@ export class MediaBridge {
     this.wanted = true;
     const exe = MediaBridge.executablePath();
     if (!exe) {
-      const reason =
-        process.platform !== 'win32'
-          ? 'System media sessions (GSMTC) are a Windows feature; not available on this OS.'
-          : 'afterglow-media-bridge.exe was not found in the app resources.';
+      const file = bridgeFileName();
+      const reason = file
+        ? `${file} was not found in the app resources.`
+        : 'Following a media app works on Windows and Linux only; not available on this OS.';
       this.send({ type: 'bridge-unavailable', reason });
       return { started: false, reason };
     }
@@ -134,6 +161,13 @@ export class MediaBridge {
         try {
           const msg = JSON.parse(line);
           if (msg && msg.type === 'state') msg.mainRecvWallMs = recv;
+          if (msg?.type === 'artwork' && typeof msg.url === 'string' && !msg.base64) {
+            const { url, ...rest } = msg;
+            void fetchArtwork(url).then((art) => {
+              if (art && this.proc === proc) this.send({ ...rest, ...art } as BridgeMessage);
+            });
+            continue;
+          }
           if (msg?.type === 'state') {
             this.lastStateAt = Date.now();
             this.refreshSent = false;

@@ -11,7 +11,7 @@ Lyrics that are a bit early or late? Say which song, and whether Spotify's **Set
 
 ## Getting set up
 
-You need Windows and Node 22 or newer.
+You need Windows or Linux and Node 22 or newer.
 
 ```bash
 npm install

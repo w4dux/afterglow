@@ -33,6 +33,7 @@ const api: AfterglowApi = {
   onBattery: () => ipcRenderer.invoke('power:onBattery'),
   setFullscreen: (v) => ipcRenderer.invoke('window:setFullscreen', v),
   isFullscreen: () => ipcRenderer.invoke('window:isFullscreen'),
+  setWindowTone: (tone) => ipcRenderer.invoke('window:setTone', tone),
   onFullscreen: (cb) => on<boolean>('window:fullscreen', cb),
   openExternal: (url) => ipcRenderer.invoke('shell:openExternal', url),
   pathForFile: (file) => webUtils.getPathForFile(file),

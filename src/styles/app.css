@@ -1295,3 +1295,62 @@ button.link:hover {
     width: 32px;
   }
 }
+/* Linux release polish (applies on every OS) */
+/* The song title wins the space in the now-playing pill. Artist and source drop out whole
+   when they no longer fit (they wrap onto a hidden second line) instead of all three shrinking
+   together into "Insec… Lil… Spotify Ca". */
+.now {
+  flex-wrap: wrap;
+  align-content: flex-start;
+  column-gap: 7px;
+  row-gap: 0;
+}
+.now > * {
+  line-height: 34px;
+  height: 34px;
+}
+.now > .q-dot {
+  height: 9px;
+  margin: 12.5px 0;
+}
+.now-title {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+.now-artist,
+.now-src {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+/* Battery saver swaps the blurred glass for a solid fill. Keep that fill in the bar's own tone
+   (light themes got dark buttons with dark text) and leave selected buttons alone. */
+.chrome {
+  --glass-solid: rgba(18, 18, 24, 0.92);
+}
+.tone-light .chrome {
+  --glass-solid: rgba(250, 247, 240, 0.95);
+}
+.battery-saver .chrome .chip:not(.on):not(.strong):not(.ghost),
+.battery-saver .chrome .round:not(.big) {
+  background-color: var(--glass-solid);
+}
+.battery-saver .chrome .chip.ghost {
+  background-color: transparent;
+}
+.battery-saver .chrome .chip.on,
+.battery-saver .chrome .chip.strong {
+  background-color: var(--text);
+}
+/* the lyrics credit keeps clear of the bottom bar's buttons */
+.attribution {
+  bottom: calc(var(--bar-h) + 14px);
+  max-width: calc(100vw - 28px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tone-light .attribution {
+  color: rgba(18, 18, 18, 0.62);
+  background: rgba(250, 247, 240, 0.7);
+}

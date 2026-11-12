@@ -152,6 +152,8 @@ export interface AfterglowApi {
   onBattery(): Promise<boolean>;
   setFullscreen(on: boolean): Promise<boolean>;
   isFullscreen(): Promise<boolean>;
+  /** Linux: recolour the window controls for a light or dark theme. Optional for older builds. */
+  setWindowTone?(tone: 'dark' | 'light'): Promise<void>;
   onFullscreen(cb: (on: boolean) => void): () => void;
   openExternal(url: string): Promise<void>;
   /** Files dropped on the window: resolve the real path (Electron webUtils). */

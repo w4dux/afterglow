@@ -43,6 +43,19 @@ function iconPath(): string | undefined {
   return existsSync(p) ? p : undefined;
 }
 
+const isLinux = process.platform === 'linux';
+/**
+ * Window controls overlay. On Linux the caption buttons are drawn by Electron in
+ * symbolColor, so they follow the theme's tone (light themes need dark symbols) and
+ * span the whole top bar so they line up with its buttons. Windows keeps its 34 px strip.
+ */
+const OVERLAY_HEIGHT = isLinux ? 52 : 34;
+function overlayFor(tone: 'dark' | 'light') {
+  return tone === 'light'
+    ? { color: '#00000000', symbolColor: '#1a1a1a', height: OVERLAY_HEIGHT }
+    : { color: '#00000000', symbolColor: '#e9e4d8', height: OVERLAY_HEIGHT };
+}
+
 function createWindow(): void {
   win = new BrowserWindow({
     width: 1280,
@@ -55,7 +68,7 @@ function createWindow(): void {
     show: false,
     autoHideMenuBar: true,
     titleBarStyle: 'hidden',
-    titleBarOverlay: { color: '#00000000', symbolColor: '#e9e4d8', height: 34 },
+    titleBarOverlay: overlayFor('dark'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -154,6 +167,15 @@ function registerIpc(): void {
     return win?.isFullScreen() ?? false;
   });
   ipcMain.handle('window:isFullscreen', () => win?.isFullScreen() ?? false);
+  ipcMain.handle('window:setTone', (_e, tone: unknown) => {
+    // Linux only: on Windows the system draws the caption buttons and they stay as they were.
+    if (!isLinux || !win || (tone !== 'dark' && tone !== 'light')) return;
+    try {
+      win.setTitleBarOverlay(overlayFor(tone));
+    } catch {
+      /* no overlay on this window manager */
+    }
+  });
   ipcMain.handle('media:peek', () => MediaBridge.peek());
   ipcMain.handle('catalog:lookup', (_e, q) => lookupCatalog({ artist: String(q?.artist ?? ''), title: String(q?.title ?? '') }));
   ipcMain.handle('catalog:artwork', (_e, url: unknown) => (typeof url === 'string' ? catalogArtwork(url) : null));

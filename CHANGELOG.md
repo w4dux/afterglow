@@ -8,6 +8,10 @@ What changed in each version of Afterglow, newest first. Design notes with scree
 - **Follow Spotify on Linux.** The media bridge has a Linux backend that follows Spotify, or any MPRIS player, over D-Bus: title, artist, album, length, artwork, play/pause, next/previous and seeking. Position is read once per second and only passed on when it really changed, so lyrics stay as steady as on Windows. See "Linux: MPRIS" in `docs/TECHNICAL.md`.
 - First-run welcome, Music & lyrics, status cards and the diagnostics report name the right system ("MPRIS media session" on Linux).
 - Bengali text falls back to Noto Sans/Serif Bengali where Nirmala UI isn't installed.
+- **Window controls on Linux** follow the theme: dark symbols on light themes (they were cream on cream, so invisible), and they sit in line with the top bar's buttons.
+- The now-playing pill keeps the song title whole; artist and source drop out when there isn't room, instead of everything being cut to "Insec… Lil… Spotify Ca".
+- Battery saver no longer turns the bar's buttons dark on light themes (dark text on a dark fill), and selected buttons keep their highlight.
+- The lyrics credit sits a little higher above the bottom bar and follows light themes.
 
 ## 2.6.0 Zine, controls that hide properly, polish
 

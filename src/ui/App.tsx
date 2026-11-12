@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { controller } from '../app/controller';
-import { localTrackFromFile } from '../app/platform';
+import { localTrackFromFile, native } from '../app/platform';
 import { getApp, setUi, useApp } from '../app/store';
 import { THEME_ORDER, THEMES } from '../themes';
 import { Chrome } from './Chrome';
@@ -41,6 +41,11 @@ export function App() {
   useEffect(() => {
     void controller.init();
   }, []);
+
+  // Linux draws the window controls itself: keep them readable on light themes.
+  useEffect(() => {
+    void native?.setWindowTone?.(tone).catch(() => undefined);
+  }, [tone]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -121,7 +126,7 @@ export function App() {
   }, []);
 
   return (
-    <div className={`app tone-${tone}${saver ? ' battery-saver' : ''}`}>
+    <div className={`app tone-${tone} os-${native?.platform ?? 'browser'}${saver ? ' battery-saver' : ''}`}>
       <Stage />
       <TranslationCaption />
       {ready && <StatusLayer />}

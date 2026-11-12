@@ -267,7 +267,7 @@ export class SystemMediaAdapter implements PlaybackAdapter {
       timelineIntervalMs,
       counts,
     });
-    this.ev.status({ playing, durationMs: this.durationOf(s) });
+    this.ev.status({ playing, durationMs: this.durationOf(s), ...(s.error ? { message: `Can’t read ${appDisplayName(s.app)}: ${s.error}` } : {}) });
   }
 
   private observe(o: Partial<Observation> & { positionMs: number; sampledAt: number; playing: boolean; cause: Observation['cause'] }): void {

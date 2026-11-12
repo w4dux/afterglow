@@ -72,6 +72,8 @@ struct Bridge {
     anchor: Option<Anchor>,
     last_emitted_anchor: Option<Anchor>,
     counts: BTreeMap<String, u64>,
+    /// Why the attached player could not be read (e.g. AccessDenied from a confined snap).
+    error: Option<String>,
 }
 
 pub fn run() {
@@ -145,6 +147,7 @@ pub fn run() {
         anchor: None,
         last_emitted_anchor: None,
         counts: BTreeMap::new(),
+        error: None,
     };
 
     let players = b.players();
@@ -393,12 +396,12 @@ impl Bridge {
         *self.counts.entry(cause.to_string()).or_insert(0) += 1;
     }
 
-    fn get_all(&self, bus: &str) -> Option<HashMap<String, OwnedValue>> {
+    fn get_all(&self, bus: &str) -> Result<HashMap<String, OwnedValue>, String> {
         let reply = self
             .conn
             .call_method(Some(bus), MPRIS_PATH, Some(PROPS_IFACE), "GetAll", &(PLAYER_IFACE,))
-            .ok()?;
-        reply.body().deserialize::<HashMap<String, OwnedValue>>().ok()
+            .map_err(|e| describe_error(&e))?;
+        reply.body().deserialize::<HashMap<String, OwnedValue>>().map_err(|e| e.to_string())
     }
 
     fn get(&self, bus: &str, prop: &str) -> Option<OwnedValue> {
@@ -496,9 +499,17 @@ impl Bridge {
             self.anchor = None;
             return;
         };
-        let Some(all) = self.get_all(&p.bus) else {
-            self.status = "unknown".into();
-            return;
+        let all = match self.get_all(&p.bus) {
+            Ok(all) => {
+                self.error = None;
+                all
+            }
+            Err(e) => {
+                self.status = "unknown".into();
+                self.anchor = None;
+                self.error = Some(e);
+                return;
+            }
         };
         let prop = |k: &str| all.get(k).map(|v| &**v);
         let prev_status = self.status.clone();
@@ -598,6 +609,9 @@ impl Bridge {
             "media": self.media,
             "controls": self.controls,
         });
+        if let Some(e) = &self.error {
+            v["error"] = json!(e);
+        }
         if let Some(a) = self.anchor {
             v["positionMs"] = json!(a.position_ms);
             v["startMs"] = json!(0.0);
@@ -675,6 +689,17 @@ impl Bridge {
             Ok(()) => emit(&json!({"type": "ack", "id": id, "ok": true, "error": Json::Null})),
             Err(e) => emit(&json!({"type": "ack", "id": id, "ok": false, "error": e.to_string()})),
         }
+    }
+}
+
+/// Human-readable reason for a failed MPRIS call. AccessDenied usually means the player
+/// is a confined snap/flatpak that only answers unconfined callers.
+fn describe_error(e: &zbus::Error) -> String {
+    let text = e.to_string();
+    if text.contains("AccessDenied") || text.contains("Access denied") {
+        format!("The player refused access over D-Bus (AccessDenied). If Afterglow was started from a sandboxed launcher, start it normally from the app menu or a terminal. Details: {text}")
+    } else {
+        text
     }
 }
 

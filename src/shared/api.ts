@@ -91,6 +91,8 @@ export interface BridgeState {
   endMs?: number;
   lastUpdatedWallMs?: number;
   emitWallMs: number;
+  /** Linux: why the player could not be read (e.g. D-Bus AccessDenied). */
+  error?: string;
   media?: { title?: string; artist?: string; album?: string; albumArtist?: string; genres?: string[]; error?: string } | null;
   controls?: { play: boolean; pause: boolean; toggle: boolean; next: boolean; prev: boolean; seek: boolean } | null;
   /** Added by the main process: wall clock when the line was read from the pipe. */

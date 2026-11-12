@@ -18,7 +18,7 @@
 
 1. Download from [Releases](https://github.com/w4dux/afterglow/releases/latest):
    - **Windows:** **Afterglow-Setup-2.6.0-x64.exe**, and run it. Windows may warn that the app isn't signed yet: choose **More info → Run anyway**.
-   - **Linux (x64):** the **.AppImage** (`chmod +x` it, then run it), the **.deb** for Debian/Ubuntu (`sudo apt install ./afterglow_*.deb`), or the **.tar.gz**. Works with the Spotify desktop app (deb, Snap or Flatpak) and any other player that supports MPRIS.
+   - **Linux (x64):** the **.AppImage** (`chmod +x` it, then run it), the **.deb** for Debian/Ubuntu (`sudo apt install ./afterglow_*.deb`), or the **.tar.gz**. Works with the Spotify desktop app (deb, Snap or Flatpak) and any other player that supports MPRIS. On Ubuntu 24.04 and newer the AppImage needs FUSE 2: `sudo apt install libfuse2t64` (or run it with `--appimage-extract-and-run`). The .deb doesn't need it.
 2. Click **Follow Spotify**.
 3. Play a song. That's it.
 
